@@ -57,6 +57,8 @@ return{
  <input v-model="person.gender" type="radio" value="male">Male
  <input v-model="person.gender" type="radio" value="female">Female<br>
  <button v-on:click="submit()">Submit</button>
+ <p v-if = "!person.name || !person.gender"> Fill all fields </p>
+ <p v-else>"Submit Successfully"</p> 
  
 
  <h1>Addition</h1>
