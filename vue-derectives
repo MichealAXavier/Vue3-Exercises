@@ -1,0 +1,71 @@
+<script>
+import { ref } from 'vue'
+export default{
+  setup() {
+const objectOfAttrs = ref({
+  id: '1',
+  name: 'Xavier',
+  course: 'MCA'
+})
+const person= ref({
+  name : '',
+  gender : ''
+})
+
+function submit(){
+ if(!person.value.name || !person.value.gender)
+{
+ console.log('fill all fields')
+ }
+ else{
+  console.log("form submitted",  person.value);
+ }
+}
+let number1 = ref('') 
+let number2 = ref('')
+
+function add() {
+   const sum = parseInt(number1.value) + parseInt(number2.value);
+   return sum;
+}
+
+
+return{
+  objectOfAttrs,
+  person,
+  number1,
+  number2,
+  add,
+  submit,
+  
+}
+}
+}
+
+</script>
+
+<template>
+  <h1>Vue Directives</h1>
+  <div v-bind="objectOfAttrs">
+    <h1>Welcome {{objectOfAttrs.name}}</h1>
+  </div>
+  
+<div>
+ <label>Name:</label>
+ <input v-model="person.name" type="text" placeholder="name"><br>
+ <label>Gender:</label>
+ <input v-model="person.gender" type="radio" value="male">Male
+ <input v-model="person.gender" type="radio" value="female">Female<br>
+ <button v-on:click="submit()">Submit</button>
+ 
+
+ <h1>Addition</h1>
+ <label>Enter number 1: </label>
+ <input  v-model="number1" type="number"><br> 
+ <label>Enter number 2: </label>
+ <input  v-model="number2" type="number"><br> 
+ <p> Result:{{add()}}</p>
+  </div>
+
+</template>
+
